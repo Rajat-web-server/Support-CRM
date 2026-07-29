@@ -30,9 +30,10 @@ function getAllTicketsController(req, res) {
 }
 //get/ticket/:id
 function getTicketByIdController(req, res) {
-  const ticket_id = req.params.id;
+  const ticket_id = req.params.ticket_id;
   const ticket = getTicketById(ticket_id);
-
+  
+  console.log(ticket)
   if (!ticket) {
   return  res.status(404).json({
       success: false,
@@ -40,11 +41,12 @@ function getTicketByIdController(req, res) {
     });
   } else {
     res.json(ticket);
+    
   }
 }
 // put/ticket/:id
 function updateTicketController(req, res) {
-  const ticket_id = req.params.id;
+  const ticket_id = req.params.ticket_id;
   const { subject, description, status } = req.body;
   const result=updateTicket(ticket_id, subject, description, status);
  
@@ -59,7 +61,7 @@ function updateTicketController(req, res) {
 }
 //DELETE /tickets/:id
 function deleteTicketController(req, res) {
-  const ticket_id = req.params.id;
+  const ticket_id = req.params.ticket_id;
   const result=deleteTicket(ticket_id);
   if (result.changes===0)
     res.status(404).json({

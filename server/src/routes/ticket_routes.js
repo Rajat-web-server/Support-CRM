@@ -5,7 +5,7 @@ const {generateTicketId,
   getAllTicketsController,
   updateTicketController,
   getTicketByIdController,
-  deleteTicketController} = require("../controllers/router")
+  deleteTicketController} = require("../controllers/ticketController")
 
 router.post('/', createTicketController);
 
