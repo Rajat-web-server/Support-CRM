@@ -6,8 +6,9 @@ const {generateTicketId,
   updateTicketController,
   getTicketByIdController,
   deleteTicketController} = require("../controllers/ticketController")
+  const validateTicket = require("../middleware/validateTicket");
 
-router.post('/', createTicketController);
+router.post('/',validateTicket, createTicketController);
 
 router.get('/', getAllTicketsController);
 
