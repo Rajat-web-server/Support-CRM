@@ -25,7 +25,9 @@ function createTicketController(req, res) {
 }
 //get
 function getAllTicketsController(req, res) {
-  const Tickets = getAllTickets();
+  console.log("req.query :", req.query)
+  const {status, search} = req.query;
+  const Tickets = getAllTickets({status, search});
   res.json(Tickets);
 }
 //get/ticket/:id

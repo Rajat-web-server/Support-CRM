@@ -30,8 +30,8 @@ function getAllTickets(filters = {}) {
     params.push(status);
   }
   if (search) {
-    query += `AND (customer_name LIKE ? OR subject LIKE ?)`;
-    params.push(`%${search}%,%${search}%`);
+    query += ` AND (customer_name LIKE ? OR subject LIKE ?)`;
+    params.push(`%${search}%`,`%${search}%`);
   }
 
   const Ticket = db.prepare(query);
