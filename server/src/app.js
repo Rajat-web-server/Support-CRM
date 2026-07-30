@@ -17,6 +17,9 @@ app.get("/", (req, res) => {
   const rows = db.prepare("SELECT * FROM tickets").all();
   console.log(rows);
 });
+// app.get("/test-error", (req, res) => {
+//   throw new Error("This is a test error");
+// });
 
 app.use("/api/tickets",ticketRoutes);
 app.use(errorHandler);

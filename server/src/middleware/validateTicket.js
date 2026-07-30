@@ -1,10 +1,10 @@
 function validateTicket(req,res,next){
 
-    import {
+    const {
   customer_name,
   customer_email,
   subject,
-  description} from req.body;
+  description}=req.body;
 
   if(!customer_name || !customer_email || !subject || !description){
    return res.status(404).json({
