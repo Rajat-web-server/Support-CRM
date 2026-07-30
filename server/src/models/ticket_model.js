@@ -19,9 +19,25 @@ function insertTicket(
   );
 }
 
-function getAllTickets() {
-  const Ticket = db.prepare(`SELECT * FROM tickets`);
-  return Ticket.all();
+function getAllTickets(filters = {}) {
+  const { status, search } = filters;
+
+  let query = `SELECT * FROM tickets WHERE 1=1`;
+  let params = [];
+
+  if (status) {
+    query += ` AND status = ?`;
+    params.push(status);
+  }
+  if (search) {
+    query += `AND (customer_name LIKE ? OR subject LIKE ?)`;
+    params.push(`%${search}%,%${search}%`);
+  }
+
+  const Ticket = db.prepare(query);
+  return Ticket.all(...params);
+  // const Ticket = db.prepare(`SELECT * FROM tickets`);
+  // return Ticket.all();
 }
 function getTicketById(ticket_id) {
   const Ticket = db.prepare(`SELECT *  FROM tickets WHERE ticket_id=?`);
