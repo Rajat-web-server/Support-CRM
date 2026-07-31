@@ -48,19 +48,27 @@ function getTicketByIdController(req, res) {
   }
 }
 // put/ticket/:id
-function updateTicketController(req, res) {
-  const ticket_id = req.params.ticket_id;
-  const { subject, description, status } = req.body;
-  const result=updateTicket(ticket_id, subject, description, status);
- 
-  if (result.changes === 0) {
-    return res.status(404).json({
-      success: false,
-      message: "Ticket not found",
-    });
-  }
+function updateTicketController(req, res, next) {
+  try {
+    const ticket_id = req.params.ticket_id;
+    const { status } = req.body;
 
-  res.json({ success: true, message: "Ticket updated" });
+    const result = updateTicket(ticket_id, status);
+
+    if (result.changes === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Ticket not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Ticket updated",
+    });
+  } catch (err) {
+    next(err);
+  }
 }
 //DELETE /tickets/:id
 function deleteTicketController(req, res) {

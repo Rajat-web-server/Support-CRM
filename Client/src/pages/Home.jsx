@@ -37,7 +37,7 @@ function Home() {
   }, [search, status]);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen  bg-gray-100">
       <Navbar />
 
       <main className="mx-auto max-w-7xl px-6 py-8">

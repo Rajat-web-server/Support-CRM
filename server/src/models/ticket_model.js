@@ -55,11 +55,14 @@ function getTicketById(ticket_id) {
   const Ticket = db.prepare(`SELECT *  FROM tickets WHERE ticket_id=?`);
   return Ticket.get(ticket_id);
 }
-function updateTicket(ticket_id, subject, description, status) {
-  const Ticket = db.prepare(`  UPDATE tickets
-    SET subject = ?, description = ?, status = ?
-    WHERE ticket_id = ?`);
-  return Ticket.run(subject, description, status, ticket_id);
+function updateTicket(ticket_id, status) {
+  const stmt = db.prepare(`
+    UPDATE tickets
+    SET status = ?
+    WHERE ticket_id = ?
+  `);
+
+  return stmt.run(status, ticket_id);
 }
 function deleteTicket(ticket_id) {
   const Ticket = db.prepare(`
