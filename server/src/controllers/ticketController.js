@@ -4,11 +4,12 @@ const {
   getTicketById,
   updateTicket,
   deleteTicket,
+   getLastTicketNumber,
 } = require("../models/ticket_model");
 
 function generateTicketId() {
-  const Ticket = getAllTickets();
-  const nextNumb = Ticket.length + 1;
+  const lastNumber = getLastTicketNumber();
+  const nextNumb = lastNumber + 1;
   return `TKT-${String(nextNumb).padStart(3, "0")}`;
 }
 //post
@@ -20,7 +21,7 @@ function createTicketController(req, res) {
 
   res.json({
     success: true,
-    "Ticket_id": ticket_id,
+    "ticket_id" : ticket_id,
   });
 }
 //get

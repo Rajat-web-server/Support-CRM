@@ -18,6 +18,18 @@ function insertTicket(
     description,
   );
 }
+function getLastTicketNumber() {
+  const row = db
+    .prepare(
+      `
+      SELECT MAX(CAST(SUBSTR(ticket_id, 5) AS INTEGER)) AS maxNumber
+      FROM tickets
+    `,
+    )
+    .get();
+
+  return row.maxNumber || 0;
+}
 
 function getAllTickets(filters = {}) {
   const { status, search } = filters;
@@ -31,7 +43,7 @@ function getAllTickets(filters = {}) {
   }
   if (search) {
     query += ` AND (customer_name LIKE ? OR subject LIKE ?)`;
-    params.push(`%${search}%`,`%${search}%`);
+    params.push(`%${search}%`, `%${search}%`);
   }
 
   const Ticket = db.prepare(query);
@@ -62,4 +74,5 @@ module.exports = {
   getTicketById,
   updateTicket,
   deleteTicket,
+  getLastTicketNumber,
 };
