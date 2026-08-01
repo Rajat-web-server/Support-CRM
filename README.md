@@ -4,9 +4,9 @@ A full-stack Customer Support CRM application built using **React, Tailwind CSS,
 
 ## 🌐 Live Demo
 
-**Frontend:** https://your-vercel-url.vercel.app
+**Frontend:** https://support-crm-two-tau.vercel.app/
 
-**Backend API:** https://support-crm-qzpq.onrender.com
+**Backend API:** https://support-crm-qzpq.onrender.com/api/
 
 ---
 
@@ -316,7 +316,7 @@ Hosted on **Render**
 **Your Name**
 
 LinkedIn:
-https://linkedin.com/in/your-profile
+https://www.linkedin.com/in/rajat-pandey-423b7434a/
 
 GitHub:
 https://github.com/yourusername
