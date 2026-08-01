@@ -1,5 +1,19 @@
 const Database = require("better-sqlite3");
-const db = new Database("./database/crm.sqlite");
+const path = require("path");
+const fs = require("fs");
+
+// Absolute path to the database folder
+const dbFolder = path.join(__dirname, "../../database");
+
+// Create the folder if it doesn't exist
+if (!fs.existsSync(dbFolder)) {
+  fs.mkdirSync(dbFolder, { recursive: true });
+}
+
+// Absolute path to the SQLite file
+const dbPath = path.join(dbFolder, "crm.sqlite");
+
+const db = new Database(dbPath);
 
 console.log("Connected to SQLite");
 db.exec(`
