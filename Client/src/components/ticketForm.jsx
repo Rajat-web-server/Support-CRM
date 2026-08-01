@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TicketForm({onSubmit, loading}) {
+function TicketForm({ onSubmit, loading }) {
   const [formData, setFormData] = useState({
     customer_name: "",
     customer_email: "",
@@ -10,12 +10,12 @@ function TicketForm({onSubmit, loading}) {
 
   const [error, setError] = useState("");
 
-  function handleChange(event){
-    const {name, value}=event.target;
+  function handleChange(event) {
+    const { name, value } = event.target;
 
-    setFormData((prev)=>({
-        ...prev,
-        [name]:value,
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
     }));
   }
 
@@ -39,22 +39,20 @@ function TicketForm({onSubmit, loading}) {
       setError(err.message);
     }
   }
- return (
+  return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-xl border bg-white p-6 shadow-sm"
+      className="rounded-xl border bg-[#0f0e0e] p-6 shadow-sm"
     >
       {error && (
-        <div className="mb-5 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div className="mb-5 rounded-lg border border-red-200 bg-red-800 p-3 text-sm text-white">
           {error}
         </div>
       )}
 
       <div className="space-y-5">
         <div>
-          <label className="mb-2 block text-sm font-medium">
-            Customer Name
-          </label>
+          <label className="mb-2 block text-sm font-bold">Customer Name</label>
 
           <input
             type="text"
@@ -62,14 +60,12 @@ function TicketForm({onSubmit, loading}) {
             value={formData.customer_name}
             onChange={handleChange}
             placeholder="Enter customer name"
-            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-black"
+            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none "
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-medium">
-            Customer Email
-          </label>
+          <label className="mb-2 block text-sm font-bold">Customer Email</label>
 
           <input
             type="email"
@@ -77,14 +73,12 @@ function TicketForm({onSubmit, loading}) {
             value={formData.customer_email}
             onChange={handleChange}
             placeholder="customer@example.com"
-            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-black"
+            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none "
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-medium">
-            Subject
-          </label>
+          <label className="mb-2 block text-sm font-bold">Subject</label>
 
           <input
             type="text"
@@ -92,14 +86,12 @@ function TicketForm({onSubmit, loading}) {
             value={formData.subject}
             onChange={handleChange}
             placeholder="What is the issue?"
-            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-black"
+            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none "
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-medium">
-            Description
-          </label>
+          <label className="mb-2 block text-sm font-bold">Description</label>
 
           <textarea
             name="description"
@@ -107,14 +99,14 @@ function TicketForm({onSubmit, loading}) {
             onChange={handleChange}
             placeholder="Describe the customer's issue..."
             rows={6}
-            className="w-full resize-none rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-black"
+            className="w-full resize-none rounded-lg border border-gray-300 px-4 py-2.5 outline-none "
           />
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-lg bg-black px-4 py-3 font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full rounded-lg bg-black px-4 py-3 font-bold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 border border-b-white"
         >
           {loading ? "Creating Ticket..." : "Create Ticket"}
         </button>

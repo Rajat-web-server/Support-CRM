@@ -37,32 +37,24 @@ function Home() {
   }, [search, status]);
 
   return (
-    <div className="min-h-screen  bg-gray-100">
+    <div className="min-h-screen  bg-[#0B0909]">
       <Navbar />
 
       <main className="mx-auto max-w-7xl px-6 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
-            Support Tickets
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-900">Support Tickets</h1>
 
-          <p className="mt-2 text-gray-500">
+          <p className="mt-1 text-gray-500">
             Manage and track customer support tickets.
           </p>
         </div>
 
         <div className="mb-6 flex flex-col gap-3 md:flex-row">
           <div className="flex-1">
-            <SearchBar
-              value={search}
-              onChange={setSearch}
-            />
+            <SearchBar value={search} onChange={setSearch} />
           </div>
 
-          <StatusFilter
-            value={status}
-            onChange={setStatus}
-          />
+          <StatusFilter value={status} onChange={setStatus} />
         </div>
 
         {loading && (
@@ -77,9 +69,7 @@ function Home() {
           </div>
         )}
 
-        {!loading && !error && (
-          <TicketTable tickets={tickets} />
-        )}
+        {!loading && !error && <TicketTable tickets={tickets} />}
       </main>
     </div>
   );

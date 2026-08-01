@@ -25,14 +25,14 @@ function CreateTicket() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-[#0B0909]">
       <Navbar />
 
       <main className="mx-auto max-w-3xl px-6 py-8">
         <div className="mb-6">
           <Link
             to="/"
-            className="text-sm text-gray-500 hover:text-black"
+            className="text-sm text-gray-500 hover:text-white"
           >
             ← Back to tickets
           </Link>
